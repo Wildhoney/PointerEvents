@@ -1,6 +1,8 @@
 PointerEvents
 ==============
 
+<img src="https://travis-ci.org/Wildhoney/PointerEvents.png?branch=master" />
+&nbsp;
 <img src="https://badge.fury.io/js/pointer-events.png" />
 
 Install via npm: `npm install pointer-events`
