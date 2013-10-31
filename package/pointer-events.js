@@ -42,6 +42,10 @@
             var targetElement = $jQuery(document.elementFromPoint(event.clientX, event.clientY)).first();
             sourceElement.show();
 
+            // Copy over the cursor property if it has one.
+            var cursorType = targetElement.css('cursor');
+            sourceElement.css('cursor', cursorType);
+
             if (!targetElement.attr('data-copied-attributes')) {
                 // Copy all of the attributes across, excluding the `class` and `style` attributes.
                 var targetAttributes = targetElement.prop('attributes');
@@ -56,6 +60,7 @@
             // Determine if it's a mouse enter event, and add the "hover" class if it is.
             if ($jQuery.inArray(event.type, mouseEnterEvents) !== -1) {
 
+                // Because we can't trigger pseudo-classes, we'll simply add the "hover" class instead.
                 targetElement.addClass('hover');
 
                 // Determine is the source element and target element have already been buffered.
@@ -81,15 +86,15 @@
                 });
 
                 if (bufferedItems.length) {
-
+                    // Remove the "hover" class from each intended element.
                     $jQuery.each(bufferedItems, function each(index, buffer) {
                         $jQuery(buffer.target).removeClass('hover');
+                        bufferedItems.splice(index, 1);
                     });
-
                 }
 
             }
-            
+
             // Relay the event to the target element.
             targetElement.trigger(event);
 
