@@ -7,14 +7,14 @@
          * @type {Array}
          */
         var events  = [
-            'click', 'dblclick', 'mousemove', 'mouseover', 'mouseleave', 'mouseenter', 'mouseout', 'blur'
+            'click', 'dblclick', 'mousemove', 'mouseover', 'mouseleave', 'mouseenter', 'mouseout', 'blur', 'focus'
         ];
 
         /**
          * @property mouseEnterEvents
          * @type {Array}
          */
-        var mouseEnterEvents = ['mouseover', 'mouseenter'];
+        var mouseEnterEvents = ['mouseover', 'mouseenter', 'focus'];
 
         /**
          * @property mouseLeaveEvents
