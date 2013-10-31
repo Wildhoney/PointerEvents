@@ -1,0 +1,17 @@
+{
+  "name": "PointerEvents",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Wildhoney/PointerEvents",
+  "authors": [
+    "Adam Timberlake <adam.timberlake@gmail.com>"
+  ],
+  "description": "Allow the emulation of pointer events for browsers without native support, such as Internet Explorer.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
