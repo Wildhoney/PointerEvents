@@ -1,5 +1,7 @@
 (function($window, $jQuery) {
 
+    "use strict";
+
     var emulatePointerEvents = function emulatePointerEvents() {
 
         /**
