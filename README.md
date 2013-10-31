@@ -3,7 +3,7 @@ PointerEvents
 
 Install via npm: `npm install pointer-events`
 
-Small little script for simulating `pointer-events: none` in older browsers &name; namely, Internet Explorer.
+Small little script for simulating `pointer-events: none` in older browsers &ndash; namely, Internet Explorer.
 
 Please see the `example/index.html` example.
 
@@ -17,6 +17,16 @@ You can use `PointerEvents` in very much the same way you use the CSS property. 
     Foreground element.
 </div>
 ```
+
+Functionality
+--------------
+
+ * Common events are relayed to the underlying node;
+ * Properties except `class` and `style` are copied across;
+ * Style `cursor` is copied across;
+ * Adds and removes `hover` class for use instead of pseudo-class `:hover`;
+
+PointerEvents uses `document.elementFromPoint` to determine what's immediately below the `data-pointer-events` node.
 
 Bugs
 --------------
