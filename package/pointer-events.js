@@ -7,7 +7,7 @@
          * @type {Array}
          */
         var events  = [
-            'click', 'dblclick', 'mousemove', 'mouseover', 'mouseleave', 'mouseenter'
+            'click', 'dblclick', 'mousemove', 'mouseover', 'mouseleave', 'mouseenter', 'mouseout', 'blur'
         ];
 
         /**
@@ -20,7 +20,13 @@
          * @property mouseLeaveEvents
          * @type {*}
          */
-        var mouseLeaveEvents = ['mouseleave', 'mouseout'];
+        var mouseLeaveEvents = ['mouseleave', 'mouseout', 'blur'];
+
+        /**
+         * @property buffer
+         * @type {Array}
+         */
+        var buffer = [];
 
         /**
          * @on events
@@ -33,7 +39,7 @@
 
             // Find the target element from where the mouse position is. Show the source node before
             // the user notices the flicker.
-            var targetElement = $jQuery(document.elementFromPoint(event.clientX, event.clientY));
+            var targetElement = $jQuery(document.elementFromPoint(event.clientX, event.clientY)).first();
             sourceElement.show();
 
             if (!targetElement.attr('data-copied-attributes')) {
@@ -49,14 +55,41 @@
 
             // Determine if it's a mouse enter event, and add the "hover" class if it is.
             if ($jQuery.inArray(event.type, mouseEnterEvents) !== -1) {
+
                 targetElement.addClass('hover');
+
+                // Determine is the source element and target element have already been buffered.
+                var isAlreadyBuffered = buffer.filter(function(buffer) {
+                    return (buffer.target === targetElement[0] && buffer.source === sourceElement[0]);
+                }).length;
+
+                if (isAlreadyBuffered === 0) {
+                    // Configure the buffer for when the opposite mouse event occurs.
+                    buffer.push({ target: targetElement[0], source: sourceElement[0] });
+                }
+
             }
 
             // Determine if it's a mouse leave event, and remove the "hover" class if it is.
             if ($jQuery.inArray(event.type, mouseLeaveEvents) !== -1) {
-                targetElement.removeClass('hover');
-            }
 
+                targetElement.removeClass('hover');
+
+                // Find the elements that needs the "hover" class remove them.
+                var bufferedItems = buffer.filter(function(buffer) {
+                    return (buffer.source === sourceElement[0]);
+                });
+
+                if (bufferedItems.length) {
+
+                    $jQuery.each(bufferedItems, function each(index, buffer) {
+                        $jQuery(buffer.target).removeClass('hover');
+                    });
+
+                }
+
+            }
+            
             // Relay the event to the target element.
             targetElement.trigger(event);
 

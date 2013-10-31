@@ -18,7 +18,7 @@ div.foreground {
     /*pointer-events: none;*/
     height: 220px;
     top: 60px;
-    left: 60px;
+    left: 100px;
 }
 
 div.background, div.foreground {
