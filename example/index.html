@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
+    <script type="text/javascript" src="../bower_components/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../package/pointer-events.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            $('.background').on('click', function() {
+                console.log(':)');
+            });
+
+        });
+
+    </script>
+
+</head>
+<body>
+
+    <div class="background" title="Please, please give me the background...">
+        Background element.
+    </div>
+
+    <div class="foreground" data-pointer-events="none">
+        Foreground element.
+    </div>
+
+</body>
+</html>
