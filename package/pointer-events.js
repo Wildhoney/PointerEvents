@@ -37,12 +37,12 @@
 
             // Find the source element, and hide it.
             var sourceElement = $jQuery(this);
-            sourceElement.hide();
+            $jQuery('*[data-pointer-events]').hide();
 
             // Find the target element from where the mouse position is. Show the source node before
             // the user notices the flicker.
             var targetElement = $jQuery(document.elementFromPoint(event.clientX, event.clientY)).first();
-            sourceElement.show();
+            $jQuery('*[data-pointer-events]').show();
 
             // Copy over the cursor property if it has one.
             var cursorType = targetElement.css('cursor');
