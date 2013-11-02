@@ -1,6 +1,6 @@
 {
   "name": "pointer-events",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Allow the emulation of pointer events for browsers without native support, such as Internet Explorer.",
   "main": "index.js",
   "scripts": {
