@@ -5,7 +5,8 @@ PointerEvents
 &nbsp;
 <img src="https://badge.fury.io/js/pointer-events.png" />
 
-Install via npm: `npm install pointer-events`
+* Install via npm: `npm install pointer-events`
+* Install via Bower: `bower install pointer-events`
 
 Small little script for simulating `pointer-events: none` in older browsers &ndash; namely, Internet Explorer.
 
